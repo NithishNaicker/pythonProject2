@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,render_template
 import numpy as np
 import pickle
 
@@ -9,21 +9,17 @@ model = pickle.load(open('model.pkl','rb'))
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return "Hello world"
+def home():
+    return render_template('index.html')
 
-@app.route('/predict',methods=['GET'])
+@app.route('/predict',methods=['POST'])
 def predict():
-    Symptom_1 = request.form.get('Symptom_1')
-    Symptom_2 = request.form.get('Symptom_2')
-    Symptom_3 = request.form.get('Symptom_3')
+    #For rendering results on HTML GUI
+    int_features = [int(x) for x in request.form.values()]
+    input_query = [np.array(int_features)]
+    result = model.predict(input_query)
 
-
-
-
-    result = model.predict([[int(Symptom_1),int(Symptom_2),int(Symptom_3)]])
-
-    return str(result)
+    return render_template('index.html', prediction_text='The disease is:{}'.format(result))
 
 if __name__ == '__main__':
     app.run(debug=True)
