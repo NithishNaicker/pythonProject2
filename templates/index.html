@@ -4,20 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predicition</title>
-</head>
+    <style>
+    form {
+  text-align: center;
+}
+h1 {text-align: center;}
+@media only screen and (max-width: 360px) {
+  body {
+    background-image: url({{ url_for('static', filename='sm_bg.png') }})
+  }
+}
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+     </style>
+    </head>
 <body>
+<br>
  <h1>Enter the Symptoms</h1>
 <form action="{{url_for('predict')}}" method="post">
 <label for="symptom1">symptom1</label><br>
-<input type="text" id="symptom1" name="symptom1" value="0"><br>
+<input type="text" id="symptom1" name="symptom1" value=" "><br><br>
     <label for="symptom2">symptom2</label><br>
-<input type="text" id="symptom2" name="symptom2" value="0"><br>
+<input type="text" id="symptom2" name="symptom2" value=" "><br><br>
     <label for="symptom3">symptom3</label><br>
-<input type="text" id="symptom3" name="symptom3" value="0"><br>
+<input type="text" id="symptom3" name="symptom3" value=" "><br><br>
     <br>
 <button type="submit" class="btn">Predict</button>
     <br><br>
 </form>
-{{ prediction_text }}
+ <h3><center>{{ prediction_text }}</center></h3>
 </body>
 </html>
