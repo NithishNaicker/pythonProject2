@@ -30,16 +30,16 @@ button {
 <br>
  <h1>Enter the Symptoms</h1>
 <form action="{{url_for('predict')}}" method="post">
-<label for="symptom1">symptom1</label><br>
-<input type="text" id="symptom1" name="symptom1" value=" "><br><br>
-    <label for="symptom2">symptom2</label><br>
-<input type="text" id="symptom2" name="symptom2" value=" "><br><br>
-    <label for="symptom3">symptom3</label><br>
-<input type="text" id="symptom3" name="symptom3" value=" "><br><br>
+<label style="font-size:19px" for="symptom1">symptom1</label><br>
+<input style="font-size:19px" type="text" id="symptom1" name="symptom1" value=""><br><br>
+    <label style="font-size:19px" for="symptom2">symptom2</label><br>
+<input style="font-size:19px" type="text" id="symptom2" name="symptom2" value=""><br><br>
+    <label style="font-size:19px" for="symptom3">symptom3</label><br>
+<input style="font-size:19px" type="text" id="symptom3" name="symptom3" value=""><br><br>
     <br>
 <button type="submit" class="btn">Predict</button>
     <br><br>
 </form>
- <h3><center>{{ prediction_text }}</center></h3>
+ <h2><center>{{ prediction_text }}</center></h2>
 </body>
 </html>
